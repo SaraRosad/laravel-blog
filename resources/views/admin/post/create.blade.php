@@ -26,8 +26,11 @@
             <div class="mb-3">
                 <label for="">Category</label>
                 <select name="category_id" class="form-control" id="">
+                    <option value="">-- Select Category --</option>
                    @foreach ($category as $cateItem)
-                   <option value="{{$cateItem->id}}">{{$cateItem->name}}</option>
+                   <option value="{{$cateItem->id}}">
+                    {{$cateItem->name}}
+                </option>
                    @endforeach
                 </select>
             </div>

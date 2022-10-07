@@ -20,6 +20,7 @@ class PostController extends Controller
         return view('admin.post.create', compact('category'));
     }
     public function store(PostFormRequest $request){
+
         $data = $request->validated();
         $post = new Post();
         $post->category_id = $data['category_id'];

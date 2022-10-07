@@ -27,7 +27,9 @@
                 <tr>
                     <td>{{$item->id}}</td>
                     <td>{{$item->name}}</td>
-                    <td><img src="{{asset('uploads/category/'.$item->name)}}"  width="50px" height="50px"  alt="Img"></td>
+                    <td>
+                        <img src="{{ asset('uploads/category/'.$item->image) }}"  width="50px" height="50px" alt="Img">
+                    </td>
                     <td>{{$item->status == '1' ? 'Hidden':'Show'}}</td>
                     <td>
                         <a href="{{url('admin/edit-category/'.$item->id)}}" class="btn btn-success">Edit</a>
