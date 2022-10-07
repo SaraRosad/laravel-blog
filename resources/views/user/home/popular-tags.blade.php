@@ -12,7 +12,7 @@
                 <span class="tag-name">#Travel</span>
                 <img src="{{asset('assets/images/tags/travel-tag.jpg')}}" alt="" class="article-image">
             </a>
-
+ 
             <a href="#" class="article">
                 <span class="tag-name">#Food</span>
                 <img src="{{asset('assets/images/tags/food-tag.jpg')}}" alt="" class="article-image">

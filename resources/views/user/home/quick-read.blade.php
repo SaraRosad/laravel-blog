@@ -13,12 +13,11 @@
                     @foreach ($categories as $category )
                         @if (!($category->id == $post->category_id))
                             @if ($category->status == '0')
-                                <a href="#" class="article swiper-slide">
+                                <a href="{{url('/user/home/show/'.$post->id)}}" class="article swiper-slide">
                                     <img src="{{asset('uploads/category/'.$category->image)}}" alt="" class="article-image">
-
                                     <div class="article-data-container">
                                         <div class="article-data">
-                                            <span> {{date('d, M Y', strtotime($post->created_at))}}</span>
+                                            <span> {{date('d M Y', strtotime($post->created_at))}}</span>
                                             <span class="article-data-spacer"></span>
                                             <span>{{$category->status == '0' ? 'Visible': 'Disable'}}</span>
                                         </div>
@@ -27,7 +26,6 @@
                                 </a>
                             @endif
                         @endif<!-- Slides -->
-
                     @endforeach
                 @endforeach
 
