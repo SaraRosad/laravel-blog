@@ -20,7 +20,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::prefix('user')->get('/index', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
+Route::prefix('user')->get('/home/index', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
 
 Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function(){
     Route::get('/dashboard', [\App\Http\Controllers\Admin\DashboardController::class, 'index']);

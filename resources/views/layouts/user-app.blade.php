@@ -9,10 +9,6 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon.png">
     <!-- Remix icons -->
@@ -21,17 +17,14 @@
     <link rel="stylesheet" href="{{ asset('assets/css/swiper-bundle.min.css') }}"/>
     <!-- Custom styles -->
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
-    <!-- Styles -->
-    <link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet">
-</head>
+  </head>
 <body>
         @include('layouts.inc.user-navbar')
 
-        <main>
-            @yield('content')
-        </main>
+        @yield('content')
+
         @include('layouts.inc.user-footer')
-        
+
     <!-- Swiper.js -->
     <script src="{{ asset('assets/js/swiper-bundle.min.js')}}"></script>
     <!-- Custom script -->

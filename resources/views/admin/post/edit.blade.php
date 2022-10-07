@@ -26,7 +26,7 @@
                 </div>
                 @endif
 
-            <form action="{{url('admin/add-post/'.$post->id)}}" method="POST" enctype="multipart/form-data">
+            <form action="{{url('admin/update-post/'.$post->id)}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="mb-3">
