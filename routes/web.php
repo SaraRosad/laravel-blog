@@ -40,4 +40,10 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function(){
     Route::put('update-post/{post_id}', [\App\Http\Controllers\Admin\PostController::class, 'update']);
     Route::get('delete-post/{post_id}', [\App\Http\Controllers\Admin\PostController::class, 'destroy']);
 
+    Route::get('tags', [\App\Http\Controllers\Admin\TagsController::class, 'index']);
+    Route::get('add-tag', [\App\Http\Controllers\Admin\TagsController::class, 'create']);
+    Route::post('add-tag', [\App\Http\Controllers\Admin\TagsController::class, 'store']);
+    Route::get('tag/{tag_id}', [\App\Http\Controllers\Admin\TagsController::class, 'edit']);
+    Route::put('update-tag/{tag_id}', [\App\Http\Controllers\Admin\TagsController::class, 'update']);
+    Route::get('delete-tag/{tag_id}', [\App\Http\Controllers\Admin\TagsController::class, 'destroy']);
 });

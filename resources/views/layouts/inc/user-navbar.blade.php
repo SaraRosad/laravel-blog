@@ -26,12 +26,28 @@
                     <li class="list-item">
                         <a href="#" class="list-link">Contact</a>
                     </li>
+                    @auth
                     <li class="list-item screen-lg-hidden">
-                        <a href="./signin.html" class="list-link">Sign in</a>
+                        <a class="list-link" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                                      document.getElementById('logout-form').submit();">
+                         {{ __('Logout') }}
+                     </a>
+
+                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                         @csrf
+                     </form></a>
                     </li>
+                    @else
                     <li class="list-item screen-lg-hidden">
-                        <a href="./signup.html" class="list-link">Sign up</a>
+                        <a href="{{ route('login') }}" class="list-link">Sign in</a>
                     </li>
+                    @if (Route::has('register'))
+                    <li class="list-item screen-lg-hidden">
+                        <a href="{{ route('register') }}" class="list-link">Sign up</a>
+                    </li>
+                    @endif
+                    @endauth
                 </ul>
             </div>
 
@@ -49,11 +65,23 @@
                     <i class="ri-menu-3-line open-menu-icon"></i>
                     <i class="ri-close-line close-menu-icon"></i>
                 </button>
+                @auth
 
-                <a href="#" class="list-link screen-sm-hidden">Sign in</a>
-                <a href="#" class="btn sign-up-btn fancy-border screen-sm-hidden">
-                    <span>Sign up</span>
+                <a class="btn sign-up-btn fancy-border screen-sm-hidden" href="{{ route('logout') }}"
+                    onclick="event.preventDefault();
+                                  document.getElementById('logout-form').submit();">
+                    <span>{{ __('Logout') }}</span>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
                 </a>
+
+                @else
+                    <a href="{{ route('login') }}" class="list-link screen-sm-hidden">Sign in</a>
+                @if (Route::has('register'))
+                    <a href="{{ route('register') }}" class="btn sign-up-btn fancy-border screen-sm-hidden"><span>Sign up</span></a>
+                @endif
+                @endauth
             </div>
 
         </nav>

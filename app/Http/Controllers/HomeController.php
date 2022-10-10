@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\Tags;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -28,6 +29,7 @@ class HomeController extends Controller
     {
         $posts = Post::all();
         $categories = Category::all();
-        return view('user.home.index', compact('posts', 'categories'));
+        $tags = Tags::all();
+        return view('user.home.index', compact('posts', 'categories', 'tags'));
     }
 }

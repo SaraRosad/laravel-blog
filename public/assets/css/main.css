@@ -285,6 +285,8 @@ body.light-theme{
 
 .headline-banner{
     background-color: var(--secondary-background-color);
+    border-top-left-radius: 999px;
+    border-bottom-left-radius: 999px;
     display: flex;
     align-items: center;
     gap: var(--gap);
@@ -308,6 +310,7 @@ body.light-theme{
 
 .fancy-border{
     position: relative;
+    border-radius: 999px;
     overflow: hidden;
 }
 
@@ -329,6 +332,7 @@ body.light-theme{
     display: inline-flex;
     background-color: var(--secondary-background-color);
     padding: .6rem 1.5rem;
+    border-radius: 999px;
 }
 
 .article{
@@ -847,13 +851,14 @@ body.light-theme{
 
     .sign-up-btn{
         padding: 4px;
+        border-radius: 999px;
     }
 
     /* Fancy button animation effect */
     .btn.fancy-border:hover::before{
         animation: animate_border .75s linear infinite
     }
-    
+
 
     @keyframes animate_border{
         to{
