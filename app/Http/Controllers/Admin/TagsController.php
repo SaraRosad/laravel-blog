@@ -14,13 +14,15 @@ use SebastianBergmann\CodeCoverage\Node\CrapIndex;
 class TagsController extends Controller
 {
     public function index(){
-        $tags = Post::all();
-        return view('admin.tags.index', compact('tags'));
+        $tags = Tags::all();
+        $posts = Post::all();
+        return view('admin.tags.index', compact('tags', 'posts'));
     }
 
     public function create(){
         $tags = Tags::all();
-        return view('admin.tags.create', compact('tags'));
+        $category = Category::where('status', '0')->get();
+        return view('admin.tags.create', compact('tags', 'category'));
     }
     public function store(TagFormRequest $request){
         $data = $request->validated();

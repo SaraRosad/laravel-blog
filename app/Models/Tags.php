@@ -12,6 +12,7 @@ class Tags extends Model
     protected $table = 'post_tags';
 
     protected $fillable = [
+        'tag_id',
         'name',
         'meta_title',
         'slug',

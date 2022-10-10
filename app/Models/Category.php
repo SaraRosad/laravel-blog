@@ -23,4 +23,9 @@ class Category extends Model
         'status',
         'created_by'
     ];
+    
+    public function tags(){
+
+        return $this->morphToMany(Tags::class, 'taggable');
+    }
 }

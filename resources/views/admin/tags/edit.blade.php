@@ -3,16 +3,16 @@
 @section('title', 'Blog Dashboard')
 @section('content')
 <div class="container-fluid px-4">
-    <h1 class="mt-4">Edit Post</h1>
+    <h1 class="mt-4">Edit Tag</h1>
     <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item active">Post</li>
+        <li class="breadcrumb-item active">Tag</li>
     </ol>
     <div class="row">
 
     </div>
     <div class="card">
         <div class="card-header">
-            <h4 class="mt-4"> Edit Post
+            <h4 class="mt-4"> Edit Tag
                 <a href="{{url('admin/posts')}}" class="btn btn-danger float-end">BACK</a>
             </h4>
         </div>
@@ -26,7 +26,7 @@
                 </div>
                 @endif
 
-            <form action="{{url('admin/update-post/'.$post->id)}}" method="POST" enctype="multipart/form-data">
+            <form action="{{url('admin/update-tag/'.$tag->id)}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="mb-3">

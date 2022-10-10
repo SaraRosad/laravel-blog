@@ -7,7 +7,7 @@
     <div class="card mt-4">
         <div class="card-header">
             <h4>View Posts
-                <a href="{{url('admin/add-post')}}" class="btn btn-primary float-end">Add Post</a>
+                <a href="{{url('admin/add-tag')}}" class="btn btn-primary float-end">Add Tags</a>
             </h4>
         </div>
         <div class="card-body">
@@ -27,7 +27,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($posts as $item )
+                @foreach ($tags as $item )
                     <tr>
                         <td>{{$item->id}}</td>
                         <td>{{$item->category->name}}</td>
