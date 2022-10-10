@@ -16,7 +16,7 @@
     <!-- Swiper.js styles -->
     <link rel="stylesheet" href="{{ asset('assets/css/swiper-bundle.min.css') }}"/>
     <!-- Custom styles -->
-    <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
+    <link rel="stylesheet" href="{{asset('assets/css/main.css')}}">
   </head>
 <body>
         @include('layouts.inc.user-navbar')

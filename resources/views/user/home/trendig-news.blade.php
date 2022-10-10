@@ -68,102 +68,32 @@
         <div class="sidebar d-grid">
 
             <h3 class="title featured-content-title">Trending news</h3>
+                @foreach ($categories as $category)
+                    @foreach ($posts as $post )
+                    <!--Show only values that has a trending value 1 to 5 -->
+                            @if ($post->category_id === $category->id)
+                            <!-- Trending News Sidebar -->
+                                <a href="#" class="trending-news-box">
+                                    <div class="trending-news-img-box">
+                                        <span class="trending-number place-items-center">{{$post->id}}</span>
+                                        <img src="{{asset('uploads/category/'.$category->image)}}" alt="" class="article-image">
+                                    </div>
 
-            <a href="#" class="trending-news-box">
-                <div class="trending-news-img-box">
-                    <span class="trending-number place-items-center">01</span>
-                    <img src="{{asset('assets/images/trending/trending_1.jpg')}}" alt="" class="article-image">
-                </div>
+                                    <div class="trending-news-data">
 
-                <div class="trending-news-data">
+                                        <div class="article-data">
+                                            <span>{{date('d M Y', strtotime($post->created_at))}}</span>
+                                            <span class="article-data-spacer"></span>
+                                            <span>3 Min read</span>
+                                        </div>
 
-                    <div class="article-data">
-                        <span>23 Dec 2021</span>
-                        <span class="article-data-spacer"></span>
-                        <span>3 Min read</span>
-                    </div>
+                                        <h3 class="title article-title">{{$post->name}}</h3>
 
-                    <h3 class="title article-title">Sample article title</h3>
-
-                </div>
-            </a>
-
-            <a href="#" class="trending-news-box">
-                <div class="trending-news-img-box">
-                    <span class="trending-number place-items-center">02</span>
-                    <img src="{{asset('assets/images/trending/trending_2.jpg')}}" alt="" class="article-image">
-                </div>
-
-                <div class="trending-news-data">
-
-                    <div class="article-data">
-                        <span>23 Dec 2021</span>
-                        <span class="article-data-spacer"></span>
-                        <span>3 Min read</span>
-                    </div>
-
-                    <h3 class="title article-title">Sample article title</h3>
-
-                </div>
-            </a>
-
-            <a href="#" class="trending-news-box">
-                <div class="trending-news-img-box">
-                    <span class="trending-number place-items-center">03</span>
-                    <img src="{{asset('assets/images/trending/trending_3.jpg')}}" alt="" class="article-image">
-                </div>
-
-                <div class="trending-news-data">
-
-                    <div class="article-data">
-                        <span>23 Dec 2021</span>
-                        <span class="article-data-spacer"></span>
-                        <span>3 Min read</span>
-                    </div>
-
-                    <h3 class="title article-title">Sample article title</h3>
-
-                </div>
-            </a>
-
-            <a href="#" class="trending-news-box">
-                <div class="trending-news-img-box">
-                    <span class="trending-number place-items-center">04</span>
-                    <img src="{{asset('assets/images/trending/trending_4.jpg')}}" alt="" class="article-image">
-                </div>
-
-                <div class="trending-news-data">
-
-                    <div class="article-data">
-                        <span>23 Dec 2021</span>
-                        <span class="article-data-spacer"></span>
-                        <span>3 Min read</span>
-                    </div>
-
-                    <h3 class="title article-title">Sample article title</h3>
-
-                </div>
-            </a>
-
-            <a href="#" class="trending-news-box">
-                <div class="trending-news-img-box">
-                    <span class="trending-number place-items-center">05</span>
-                    <img src="{{asset('assets/images/trending/trending_5.jpg')}}" alt="" class="article-image">
-                </div>
-
-                <div class="trending-news-data">
-
-                    <div class="article-data">
-                        <span>23 Dec 2021</span>
-                        <span class="article-data-spacer"></span>
-                        <span>3 Min read</span>
-                    </div>
-
-                    <h3 class="title article-title">Sample article title</h3>
-
-                </div>
-            </a>
-
+                                    </div>
+                                </a>
+                            @endif
+                    @endforeach
+                @endforeach
         </div>
 
     </div>

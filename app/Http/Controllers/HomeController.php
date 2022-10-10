@@ -28,7 +28,6 @@ class HomeController extends Controller
     {
         $posts = Post::all();
         $categories = Category::all();
-     dd($posts);
         return view('user.home.index', compact('posts', 'categories'));
     }
 }
