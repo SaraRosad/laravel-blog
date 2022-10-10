@@ -21,7 +21,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::prefix('user/home')->middleware(['auth'])->group(function(){
-    Route::get('/index', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
+    Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
     Route::get('/show/{post_id}', [App\Http\Controllers\User\PostUserController::class, 'show']);
 });
 Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function(){
