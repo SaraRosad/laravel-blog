@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\PostFormRequest;
 use App\Models\Category;
 use App\Models\Post;
-use App\Models\Taggable;
 use App\Models\Tags;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,8 +14,7 @@ class PostController extends Controller
 {
     public function index(){
         $posts = Post::all();
-        $taggable = Taggable::all();
-        return view('admin.post.index', compact('posts', 'taggable'));
+        return view('admin.post.index', compact('posts'));
     }
     public function create(){
         $category = Category::where('status', '0')->get();
@@ -26,9 +24,12 @@ class PostController extends Controller
     public function store(PostFormRequest $request){
 
         $data = $request->validated();
+        $tags = new Tags();
         $post = new Post();
+        $tags->posts()->attach($request->input('id'));
+        $post->tags()->attach($request->input('id'));
         $post->category_id = $data['category_id'];
-        $post->tag_id = $data['tag_id'];
+        /* $post->tag_id = $data['tag_id']; */
         $post->name = $data['name'];
         $post->slug = $data['slug'];
         $post->description = $data['description'];
@@ -54,9 +55,11 @@ class PostController extends Controller
     public function update(PostFormRequest $request, $post_id)
     {
         $data = $request->validated();
-
         $post = Post::find($post_id);
+        $tags = new Tags();
+        $tags->posts()->sync($request->input('id'));
         $post->category_id = $data['category_id'];
+        $post->tags()->sync($request->input('id'));
         $post->name = $data['name'];
         $post->slug = $data['slug'];
         $post->description = $data['description'];
@@ -70,9 +73,12 @@ class PostController extends Controller
         $post->update();
         return redirect('admin/posts')->with('message', 'Post Updated Successfully');
     }
-    public function destroy($post_id)
+    public function destroy(PostFormRequest $request, $post_id)
     {
         $post = Post::find($post_id);
+        $tags = new Tags();
+        $tags->posts()->detach($request->input('id'));
+        $post->tags()->detach($request->input('id'));
         $post->delete();
         return redirect('admin/posts')->with('message', 'Post Deleted Successfully');
     }

@@ -9,18 +9,17 @@ class Tags extends Model
 {
     use HasFactory;
 
-    protected $table = 'post_tags';
+    protected $table = 'tags';
 
     protected $fillable = [
         'name',
         'meta_title',
         'slug',
-        'status',
         'created_by'
     ];
     public function posts(){
 
-        return $this->belongsToMany(Post::class,  'tag_id', 'id');
+        return $this->belongsToMany(Post::class, 'post_tag', 'post_id', 'tag_id');
     }
 
 }

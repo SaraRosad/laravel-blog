@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\TagFormRequest;
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\Taggable;
 use App\Models\Tags;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,8 +16,7 @@ class TagsController extends Controller
 {
     public function index(){
         $tags = Tags::all();
-        $posts = Post::all();
-        return view('admin.tags.index', compact('tags', 'posts'));
+        return view('admin.tags.index', compact('tags'));
     }
 
     public function create(){
@@ -45,8 +45,7 @@ class TagsController extends Controller
     {
         $data = $request->validated();
 
-        $tag = Post::find($tag_id);
-        $tag->category_id = $data['category_id'];
+        $tag = Tags::find($tag_id);
         $tag->name = $data['name'];
         $tag->meta_title = $data['meta_title'];
         $tag->slug = $data['slug'];

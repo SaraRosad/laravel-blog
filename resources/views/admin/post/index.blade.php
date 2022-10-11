@@ -31,8 +31,8 @@
                     <tr>
                         <td>{{$item->id}}</td>
                         <td>{{$item->category->name}}</td>
-                        <td>@foreach ($taggable as $tag)
-                            {{$tag->name}}
+                        <td>@foreach ($item->tags as $tags)
+                            {{$tags->meta_title}}
                         @endforeach</td>
                         <td>{{$item->name}}</td>
                         <td>{{$item->status == '1' ? 'Hidden':'Visible'}}</td>

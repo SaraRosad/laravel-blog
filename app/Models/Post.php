@@ -29,12 +29,9 @@ class Post extends Model
 
         return $this->belongsTo(Category::class, 'category_id', 'id');
     }
-    public function post_tags(){
-
-        return $this->belongsTo(Tags::class, 'tag_id', 'id');
-    }
     public function tags(){
 
-        /* return $this->morphToMany(Taggables::class, 'taggable'); */
+        return $this->belongsToMany(Tags::class, 'post_tag','tag_id', 'post_id');
     }
+
 }
