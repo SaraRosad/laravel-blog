@@ -20,6 +20,7 @@
                 <tr>
                     <th>ID</th>
                     <th>Category</th>
+                    <th>Tag Name</th>
                     <th>Post Name</th>
                     <th>State</th>
                     <th>Actions</th>
@@ -30,6 +31,9 @@
                     <tr>
                         <td>{{$item->id}}</td>
                         <td>{{$item->category->name}}</td>
+                        <td>@foreach ($taggable as $tag)
+                            {{$tag->name}}
+                        @endforeach</td>
                         <td>{{$item->name}}</td>
                         <td>{{$item->status == '1' ? 'Hidden':'Visible'}}</td>
                         <td>

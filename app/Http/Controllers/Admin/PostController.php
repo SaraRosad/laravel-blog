@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\PostFormRequest;
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\Taggable;
 use App\Models\Tags;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,12 +15,13 @@ class PostController extends Controller
 {
     public function index(){
         $posts = Post::all();
-        return view('admin.post.index', compact('posts'));
+        $taggable = Taggable::all();
+        return view('admin.post.index', compact('posts', 'taggable'));
     }
     public function create(){
         $category = Category::where('status', '0')->get();
-        $tags = Tags::where('status', '0')->get();
-        return view('admin.post.create', compact('category', 'tags'));
+        $tag = Tags::where('status', '0')->get();
+        return view('admin.post.create', compact('category', 'tag'));
     }
     public function store(PostFormRequest $request){
 

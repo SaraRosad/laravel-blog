@@ -38,7 +38,7 @@ class TagsController extends Controller
     }
     public function edit($tag_id){
         $tag = Tags::find($tag_id);
-        return view('admin.tag.edit', compact('tag', 'category'));
+        return view('admin.tags.edit', compact('tag'));
     }
 
     public function update(TagFormRequest $request, $tag_id)

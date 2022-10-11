@@ -77,7 +77,7 @@
             </div>
             <div class="row">
                 <div class="my-2 p-2 bg-dark rounded">
-                    <h3>Categories</h3>
+                    <h3>Tags</h3>
                 </div>
                 @foreach ($tags as $tag )
                 <div class="col-xl-6">

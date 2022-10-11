@@ -42,6 +42,17 @@
                     </select>
                 </div>
                 <div class="mb-3">
+                    <label for="">Tags</label>
+                    <select name="tag_id" class="form-control" id="">
+                        <option value="">-- Select Tag --</option>
+                       @foreach ($tag as $tagItem)
+                            <option value="{{$tagItem->id}}" {{$post->tag_id == $tagItem->id ? 'selected':''}}>
+                                    {{$tagItem->name}}
+                            </option>
+                       @endforeach
+                    </select>
+                </div>
+                <div class="mb-3">
                     <label for="">Post Name</label>
                     <input type="text" name="name" value="{{$post->name}}" class="form-control">
                 </div>

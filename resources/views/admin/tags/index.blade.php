@@ -1,12 +1,12 @@
 @extends('layouts.master')
 
-@section('title', 'View Post')
+@section('title', 'Blog - View Tags')
 
 @section('content')
 <div class="container-fluid px-4">
     <div class="card mt-4">
         <div class="card-header">
-            <h4>View Posts
+            <h4>View Tags
                 <a href="{{url('admin/add-tag')}}" class="btn btn-primary float-end">Add Tags</a>
             </h4>
         </div>
@@ -19,9 +19,8 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Category</th>
-                    <th>Post Name</th>
-                    <th>Tag Name</th>
+                    <th>Name</th>
+                    <th>Meta Title</th>
                     <th>State</th>
                     <th>Actions</th>
                 </tr>
@@ -30,9 +29,8 @@
                 @foreach ($tags as $item )
                     <tr>
                         <td>{{$item->id}}</td>
-                        <td>{{$item->category->name}}</td>
                         <td>{{$item->name}}</td>
-                        <td>{{$item->tags->meta_title}}</td>
+                        <td>{{$item->meta_title}}</td>
                         <td>{{$item->status == '1' ? 'Hidden':'Visible'}}</td>
                         <td>
                             <a href="{{url('admin/tags/'.$item->id)}}" class="btn btn-success">Edit</a>

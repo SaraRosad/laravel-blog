@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Blog Dashboard')
+@section('title', 'Blog - Edit Tag')
 @section('content')
 <div class="container-fluid px-4">
     <h1 class="mt-4">Edit Tag</h1>
@@ -13,7 +13,7 @@
     <div class="card">
         <div class="card-header">
             <h4 class="mt-4"> Edit Tag
-                <a href="{{url('admin/posts')}}" class="btn btn-danger float-end">BACK</a>
+                <a href="{{url('admin/tags')}}" class="btn btn-danger float-end">BACK</a>
             </h4>
         </div>
         <div class="card-body">
@@ -26,34 +26,22 @@
                 </div>
                 @endif
 
-            <form action="{{url('admin/update-tag/'.$tag->id)}}" method="POST" enctype="multipart/form-data">
+            <form action="{{url('admin/tags/'.$tag->id)}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="mb-3">
-                    <label for="">Category</label>
-
-                    <select name="category_id" required class="form-control" id="">
-                        <option value="">-- Select Category --</option>
-                       @foreach ($category as $cateItem)
-                       <option value="{{$cateItem->id}}" {{$tags->id == $cateItem->tag_id ? 'selected':''}}>
-                            {{$cateItem->name}}
-                        </option>
-                       @endforeach
-                    </select>
-                </div>
-                <div class="mb-3">
                     <label for="">Tag Name</label>
-                    <input type="text" name="name" value="{{$tags->name}}" class="form-control">
+                    <input type="text" name="name" value="{{$tag->name}}" class="form-control">
                 </div>
                 <div class="mb-3">
                     <label for="">Slug</label>
-                    <input type="text" name="slug" value="{{$tags->slug}}" class="form-control">
+                    <input type="text" name="slug" value="{{$tag->slug}}" class="form-control">
                 </div>
 
                 <h4>Show Tags</h4>
                 <div class="mb-3">
                     <label for="">Meta Title</label>
-                    <input type="text" name="meta_title" value="{{$tags->meta_title}}" class="form-control">
+                    <input type="text" name="meta_title" value="{{$tag->meta_title}}" class="form-control">
                 </div>
 
                 <h4>Status</h4>
@@ -61,7 +49,7 @@
                     <div class="col-md-4">
                         <div class="mb-3">
                             <label for="">Status</label>
-                            <input name="navbar_status" type="checkbox" value="{{$tags->status == 1 ? 'checked': ''}}">
+                            <input name="navbar_status" type="checkbox" value="{{$tag->status == 1 ? 'checked': ''}}">
                         </div>
                     </div>
                     <div class="col-md-8">

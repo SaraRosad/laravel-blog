@@ -15,8 +15,11 @@ class CreateTagsTable extends Migration
     {
         Schema::create('tags', function (Blueprint $table) {
             $table->id();
-            $table->integer('taggable_id');
-            $table->string('taggable_type');
+            $table->integer('post_id')->unsigned()->index();
+            $table->foreign('post_id')->references('id')->on('post_tags')->onDelete('cascade');
+            $table->integer('tag_id')->unsigned()->index();
+            $table->foreign('tag_id')->references('id')->on('posts')->onDelete('cascade');
+
             $table->timestamps();
         });
     }
