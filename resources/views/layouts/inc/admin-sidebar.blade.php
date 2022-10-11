@@ -38,7 +38,7 @@
                 <div class="collapse" id="collapsePost" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
                         <a class="nav-link" href="{{url('admin/add-tag')}}">Add Tag</a>
-                        <a class="nav-link" href="{{url('admin/tags')}}">View Tag</a>
+                        <a class="nav-link" href="{{url('admin/tag')}}">View Tag</a>
                     </nav>
                 </div>
              {{--    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">

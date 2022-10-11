@@ -52,43 +52,18 @@
 
             <div class="row">
                 <div class="my-2 p-2 bg-dark rounded">
-                    <h3>Categories</h3>
-                </div>
-                @foreach ($category as $categories )
-                <div class="col-xl-6">
-                    <div class="card mb-4">
-                        <div class="card-header">
-                            <h4>{{$categories->name}}</h4>
-                            <i class="fas fa-chart-area me-1"></i>
-                        </div>
-                        <div class="card-body">
-                            <img src="{{asset('uploads/category/'.$categories->image)}}" width="150">
-                            <div class="my-2">
-                                {{$categories->description}}
-                            </div>
-                        </div>
-                        <div class="card-footer d-flex align-items-center justify-content-between">
-                            <a class="small text-white stretched-link" href="{{url('admin/edit-category/'.$categories->id)}}">View Details</a>
-                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-            </div>
-            <div class="row">
-                <div class="my-2 p-2 bg-dark rounded">
                     <h3>Tags</h3>
                 </div>
                 @foreach ($tags as $tag )
                 <div class="col-xl-6">
                     <div class="card mb-4">
                         <div class="card-header">
-                            <h4>{{_('#')}}{{$tag->name}}</h4>
+                            <h4>{{$tag->meta_title}}</h4>
                             <i class="fas fa-chart-area me-1"></i>
                         </div>
 
                         <div class="card-footer d-flex align-items-center justify-content-between">
-                            <a class="small text-white stretched-link" href="{{url('admin/edit-tag/'.$tag->id)}}">View Details</a>
+                            <a class="small text-white stretched-link" href="{{url('admin/tag/'.$tag->id)}}">View Details</a>
                             <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                         </div>
                     </div>

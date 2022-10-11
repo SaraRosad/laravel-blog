@@ -45,9 +45,9 @@
                     <label for="">Tags</label>
                     <select name="tag_id" class="form-control" id="">
                         <option value="">-- Select Tag --</option>
-                       @foreach ($tag as $tagItem)
-                            <option value="{{$tagItem->id}}" {{$post->tag_id == $tagItem->id ? 'selected':''}}>
-                                    {{$tagItem->name}}
+                       @foreach ($tag as $tags)
+                            <option value="{{$tags->id}}" {{$tags->post_id == $post->id ? 'selected':''}}>
+                                    {{$tags->name}}
                             </option>
                        @endforeach
                     </select>

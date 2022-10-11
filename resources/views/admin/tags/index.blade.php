@@ -34,7 +34,7 @@
                         <td>{{$item->status == '1' ? 'Hidden':'Visible'}}</td>
                         <td>
                             <a href="{{url('admin/tags/'.$item->id)}}" class="btn btn-success">Edit</a>
-                            <a href="{{url('admin/delete-tags/'.$item->id)}}" class="btn btn-danger mx-2r">Delete</a>
+                            <a href="{{url('admin/delete-tag/'.$item->id)}}" class="btn btn-danger mx-2r">Delete</a>
                         </td>
 
                     </tr>

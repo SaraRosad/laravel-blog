@@ -29,7 +29,6 @@ class PostController extends Controller
         $tags->posts()->attach($request->input('id'));
         $post->tags()->attach($request->input('id'));
         $post->category_id = $data['category_id'];
-        /* $post->tag_id = $data['tag_id']; */
         $post->name = $data['name'];
         $post->slug = $data['slug'];
         $post->description = $data['description'];
@@ -49,7 +48,8 @@ class PostController extends Controller
     public function edit($post_id){
         $category = Category::where('status', '0')->get();
         $post = Post::find($post_id);
-        return view('admin.post.edit', compact('post', 'category'));
+        $tag = Tags::all();
+        return view('admin.post.edit', compact('post', 'category', 'tag'));
     }
 
     public function update(PostFormRequest $request, $post_id)
@@ -73,12 +73,10 @@ class PostController extends Controller
         $post->update();
         return redirect('admin/posts')->with('message', 'Post Updated Successfully');
     }
-    public function destroy(PostFormRequest $request, $post_id)
+    public function destroy($post_id)
     {
         $post = Post::find($post_id);
-        $tags = new Tags();
-        $tags->posts()->detach($request->input('id'));
-        $post->tags()->detach($request->input('id'));
+        $post->tags()->detach();
         $post->delete();
         return redirect('admin/posts')->with('message', 'Post Deleted Successfully');
     }

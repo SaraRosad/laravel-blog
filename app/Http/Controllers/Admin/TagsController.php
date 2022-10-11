@@ -34,7 +34,7 @@ class TagsController extends Controller
         $tag->created_by = Auth::user()->id;
 
         $tag->save();
-        return redirect('admin/tags')->with('message', 'Tag Added Successfully');
+        return redirect('admin/tag')->with('message', 'Tag Added Successfully');
     }
     public function edit($tag_id){
         $tag = Tags::find($tag_id);
@@ -53,12 +53,12 @@ class TagsController extends Controller
         $tag->created_by = Auth::user()->id;
 
         $tag->update();
-        return redirect('admin/tags')->with('message', 'Tag Updated Successfully');
+        return redirect('admin/tag')->with('message', 'Tag Updated Successfully');
     }
     public function destroy($tag_id)
     {
         $tag = Tags::find($tag_id);
         $tag->delete();
-        return redirect('admin/tags')->with('message', 'Tag Deleted Successfully');
+        return redirect('admin/tag')->with('message', 'Tag Deleted Successfully');
     }
 }

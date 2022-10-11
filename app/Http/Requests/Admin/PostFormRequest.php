@@ -28,10 +28,6 @@ class PostFormRequest extends FormRequest
                 'required',
                 'integer'
             ],
-            'tag_id'=>[
-                'required',
-                'integer'
-            ],
             'name' =>[
                 'required',
                 'string'
