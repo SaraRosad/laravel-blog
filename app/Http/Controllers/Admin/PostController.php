@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\PostFormRequest;
+use App\Http\Requests\Admin\TagFormRequest;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tags;
@@ -21,13 +22,14 @@ class PostController extends Controller
         $tag = Tags::where('status', '0')->get();
         return view('admin.post.create', compact('category', 'tag'));
     }
-    public function store(PostFormRequest $request){
+    public function store(PostFormRequest $request, TagFormRequest $requestTag){
 
         $data = $request->validated();
         $tags = new Tags();
         $post = new Post();
-        $tags->posts()->attach($request->input('id'));
-        $post->tags()->attach($request->input('id'));
+        $tags->posts()->attach($requestTag->id);
+        $post->tags()->attach($request->id);
+        dd($tags, $post);
         $post->category_id = $data['category_id'];
         $post->name = $data['name'];
         $post->slug = $data['slug'];
@@ -41,7 +43,7 @@ class PostController extends Controller
 
 
         $post->save();
-        return redirect('admin/posts')->with('message', 'Post Added Successfully');
+        return redirect('user/posts')->with('message', 'Post Added Successfully');
 
 
     }
@@ -58,6 +60,8 @@ class PostController extends Controller
         $post = Post::find($post_id);
         $tags = new Tags();
         $tags->posts()->sync($request->input('id'));
+        $post->tags()->sync($request->id);
+        dd($tags, $post);
         $post->category_id = $data['category_id'];
         $post->tags()->sync($request->input('id'));
         $post->name = $data['name'];
@@ -71,13 +75,13 @@ class PostController extends Controller
         $post->created_by =Auth::user()->id;
 
         $post->update();
-        return redirect('admin/posts')->with('message', 'Post Updated Successfully');
+        return redirect('user/posts')->with('message', 'Post Updated Successfully');
     }
     public function destroy($post_id)
     {
         $post = Post::find($post_id);
         $post->tags()->detach();
         $post->delete();
-        return redirect('admin/posts')->with('message', 'Post Deleted Successfully');
+        return redirect('user/posts')->with('message', 'Post Deleted Successfully');
     }
 }

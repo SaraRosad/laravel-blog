@@ -7,7 +7,7 @@
     <div class="card mt-4">
         <div class="card-header">
             <h4>View Posts
-                <a href="{{url('admin/add-post')}}" class="btn btn-primary float-end">Add Post</a>
+                <a href="{{url('user/add-post')}}" class="btn btn-primary float-end">Add Post</a>
             </h4>
         </div>
         <div class="card-body">
@@ -37,8 +37,8 @@
                         <td>{{$item->name}}</td>
                         <td>{{$item->status == '1' ? 'Hidden':'Visible'}}</td>
                         <td>
-                            <a href="{{url('admin/post/'.$item->id)}}" class="btn btn-success">Edit</a>
-                            <a href="{{url('admin/delete-post/'.$item->id)}}" class="btn btn-danger mx-2r">Delete</a>
+                            <a href="{{url('user/post/'.$item->id)}}" class="btn btn-success">Edit</a>
+                            <a href="{{url('user/delete-post/'.$item->id)}}" class="btn btn-danger mx-2r">Delete</a>
                         </td>
 
                     </tr>

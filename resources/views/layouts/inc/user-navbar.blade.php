@@ -9,8 +9,13 @@
             <div class="menu" id="menu">
                 <ul class="list">
                     <li class="list-item">
-                        <a href="#" class="list-link current">Home</a>
+                        <a href="{{url('user/home')}}" class="list-link current">Home</a>
                     </li>
+                    @if(Auth::user()->role_as == '1')
+                        <li class="list-item">
+                            <a href="{{url('user/dashboard')}}" class="list-link">Dashboard</a>
+                        </li>
+                    @endif
                     <li class="list-item">
                         <a href="#" class="list-link">Categories</a>
                     </li>

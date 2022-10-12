@@ -23,8 +23,10 @@ Auth::routes();
 Route::prefix('user/home')->middleware(['auth'])->group(function(){
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
     Route::get('/show/{post_id}', [App\Http\Controllers\User\PostUserController::class, 'show']);
+
 });
-Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function(){
+
+Route::prefix('user')->middleware(['auth', 'isAdmin'])->group(function(){
     Route::get('/dashboard', [\App\Http\Controllers\Admin\DashboardController::class, 'index']);
     Route::get('/category', [\App\Http\Controllers\Admin\CategoryController::class, 'index']);
     Route::get('/add-category', [\App\Http\Controllers\Admin\CategoryController::class, 'create']);

@@ -29,7 +29,10 @@ class HomeController extends Controller
     {
         $posts = Post::all();
         $categories = Category::all();
-        $tags = Tags::all();
-        return view('user.home.index', compact('posts', 'categories', 'tags'));
+        $tags = Tags::where(['status' => '0'])->get();
+        $tagsRamdon = Tags::inRandomOrder()->limit(5)->get();
+        $tagsCount =  Tags::count();
+
+        return view('user.home.index', compact('posts', 'categories', 'tags','tagsCount'));
     }
 }

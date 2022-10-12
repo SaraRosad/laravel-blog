@@ -13,7 +13,7 @@
     <div class="card">
         <div class="card-header">
             <h4 class="mt-4"> Edit Tag
-                <a href="{{url('admin/tags')}}" class="btn btn-danger float-end">BACK</a>
+                <a href="{{url('user/tags')}}" class="btn btn-danger float-end">BACK</a>
             </h4>
         </div>
         <div class="card-body">
@@ -26,7 +26,7 @@
                 </div>
                 @endif
 
-            <form action="{{url('admin/tag/'.$tag->id)}}" method="POST" enctype="multipart/form-data">
+            <form action="{{url('user/tag/'.$tag->id)}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="mb-3">
@@ -43,7 +43,17 @@
                     <label for="">Meta Title</label>
                     <input type="text" name="meta_title" value="{{$tag->meta_title}}" class="form-control">
                 </div>
+                <div class="mb-3">
+                    <label for="">
+                        Image
+                    </label>
+                    <input type="file" name="image"  class="form-control">
+                    <div class="mt-2 d-flex"><img src="{{asset('uploads/category/'.$category->image)}}"  width="150px" height="150px"  alt="Img"> <div class="mx-2 mt-auto"><label for="">{{'/uploads/category/'.$category->image}}</label></div></div>
 
+                    @if ($errors->has('image'))
+                        <span class="text-danger">{{ $errors->first('image') }}</span>
+                    @endif
+                </div>
                 <h4>Status</h4>
                 <div class="row">
                     <div class="col-md-4">

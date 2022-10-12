@@ -32,6 +32,10 @@ class TagFormRequest extends FormRequest
                 'required',
                 'string'
             ],
+            'image' => [
+                'nullable',
+                'mimes:jpeg,jpg,png,svg'
+            ],
             'slug'=>[
                 'required',
                 'string'

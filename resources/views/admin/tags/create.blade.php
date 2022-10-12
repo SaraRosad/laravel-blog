@@ -8,7 +8,7 @@
 
         <div class="card-header">
             <h4>Add Tags
-                <a href="{{url('admin/add-tag')}}" class="btn btn-primary float-end">Add Tag</a>
+                <a href="{{url('user/add-tag')}}" class="btn btn-primary float-end">Add Tag</a>
             </h4>
         </div>
         <div class="card-body">
@@ -21,7 +21,7 @@
 
             </div>
             @endif
-           <form action="{{url('admin/add-tag')}}" method="POST">
+           <form action="{{url('user/add-tag')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
                 <label for="">Tag Name</label>
@@ -37,7 +37,15 @@
                 <label for="">Meta Title</label>
                 <input type="text" name="meta_title" class="form-control">
             </div>
-
+            <div class="mb-3">
+                <label for="">
+                    Image
+                </label>
+                <input type="file" name="image" class="form-control">
+                @if ($errors->has('image'))
+                    <span class="text-danger">{{ $errors->first('image') }}</span>
+                @endif
+            </div>
             <h4>Status</h4>
             <div class="row">
                 <div class="col-md-4">

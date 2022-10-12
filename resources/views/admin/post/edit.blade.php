@@ -13,7 +13,7 @@
     <div class="card">
         <div class="card-header">
             <h4 class="mt-4"> Edit Post
-                <a href="{{url('admin/posts')}}" class="btn btn-danger float-end">BACK</a>
+                <a href="{{url('user/posts')}}" class="btn btn-danger float-end">BACK</a>
             </h4>
         </div>
         <div class="card-body">
@@ -26,7 +26,7 @@
                 </div>
                 @endif
 
-            <form action="{{url('admin/update-post/'.$post->id)}}" method="POST" enctype="multipart/form-data">
+            <form action="{{url('user/update-post/'.$post->id)}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="mb-3">

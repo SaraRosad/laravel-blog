@@ -19,8 +19,9 @@
     <!-- Styles -->
    {{--  <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
     <link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/js/apexcharts/styles.css') }}" rel="stylesheet">
     <!-- Scripts -->
-    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    <script src="{{asset('assets/js/fontawesome/all.js')}}" crossorigin="anonymous"></script>
 </head>
 <body>
     @include('layouts.inc.admin-navbar')
@@ -39,5 +40,9 @@
 
     <script src="{{asset('assets/js/bootstrap.bundle.min.js')}}" crossorigin="anonymous"></script>
     <script src="{{ asset('assets/js/scripts.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.slim.min.js') }}"></script>
+    <script src="{{ asset('assets/js/apexcharts/apexcharts.cdn.js') }}"></script>
+    <script src="{{ asset('assets/js/apexcharts/scripts.js') }}"></script>
+
 </body>
 </html>

@@ -44,7 +44,7 @@ class CategoryController extends Controller
         $category->status =$request->status == true ? '1':'0';
         $category->created_by = Auth::user()->id;
         $category->save();
-        return redirect('admin/category')->with('message', 'Category Added Successfully');
+        return redirect('user/category')->with('message', 'Category Added Successfully');
     }
 
     public function edit($category_id){
@@ -82,7 +82,7 @@ class CategoryController extends Controller
         $category->status =$request->status == true ? '1':'0';
         $category->created_by = Auth::user()->id;
         $category->update();
-        return redirect('admin/category')->with('message', 'Category Updated Successfully');
+        return redirect('user/category')->with('message', 'Category Updated Successfully');
 
     }
 
@@ -96,9 +96,9 @@ class CategoryController extends Controller
                 File::delete($destination);
             }
             $category->delete();
-            return redirect('admin/category')->with('message', 'Category Deleted Successfully');
+            return redirect('user/category')->with('message', 'Category Deleted Successfully');
         }else{
-            return redirect('admin/category')->with('message', 'No Category Id Found');
+            return redirect('user/category')->with('message', 'No Category Id Found');
         }
     }
 }

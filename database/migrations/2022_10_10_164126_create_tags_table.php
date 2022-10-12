@@ -17,6 +17,7 @@ class CreateTagsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('meta_title');
+            $table->string('image');
             $table->string('slug');
             $table->tinyInteger('status')->default('0');
             $table->integer('created_by');

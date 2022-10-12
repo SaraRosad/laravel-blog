@@ -23,7 +23,7 @@
                 @endif
             </div>
 
-            <form action="{{url('admin/update-category/'.$category->id)}}" method="POST" enctype="multipart/form-data">
+            <form action="{{url('user/update-category/'.$category->id)}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="mb-3">

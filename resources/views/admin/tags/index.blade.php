@@ -7,7 +7,7 @@
     <div class="card mt-4">
         <div class="card-header">
             <h4>View Tags
-                <a href="{{url('admin/add-tag')}}" class="btn btn-primary float-end">Add Tags</a>
+                <a href="{{url('user/add-tag')}}" class="btn btn-primary float-end">Add Tags</a>
             </h4>
         </div>
         <div class="card-body">
@@ -21,6 +21,7 @@
                     <th>ID</th>
                     <th>Name</th>
                     <th>Meta Title</th>
+                    <th>Image</th>
                     <th>State</th>
                     <th>Actions</th>
                 </tr>
@@ -31,10 +32,11 @@
                         <td>{{$item->id}}</td>
                         <td>{{$item->name}}</td>
                         <td>{{$item->meta_title}}</td>
+                        <td><img src="{{asset('/uploads/tags/'.$item->image)}}" width="50px"></td>
                         <td>{{$item->status == '1' ? 'Hidden':'Visible'}}</td>
                         <td>
-                            <a href="{{url('admin/tags/'.$item->id)}}" class="btn btn-success">Edit</a>
-                            <a href="{{url('admin/delete-tag/'.$item->id)}}" class="btn btn-danger mx-2r">Delete</a>
+                            <a href="{{url('user/tags/'.$item->id)}}" class="btn btn-success">Edit</a>
+                            <a href="{{url('user/delete-tag/'.$item->id)}}" class="btn btn-danger mx-2r">Delete</a>
                         </td>
 
                     </tr>

@@ -1,7 +1,7 @@
 /*!
     * Start Bootstrap - SB Admin v7.0.5 (https://startbootstrap.com/template/sb-admin)
     * Copyright 2013-2022 Start Bootstrap
-    * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-sb-admin/blob/master/LICENSE)
+    * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-sb-user/blob/master/LICENSE)
     */
 
 const { toArray } = require("lodash");
@@ -47,7 +47,7 @@ window.addEventListener('DOMContentLoaded', event => {
         document.querySelector('#add-form').addEventListener('submit', (e) => {
             e.preventDefault();
             var formData = new FormData(e.target);
-            fetch("{{ url('admin/add-post') }}", {
+            fetch("{{ url('user/add-post') }}", {
               method: 'POST',
               body: formData
             }).then(() => console.log('success'));

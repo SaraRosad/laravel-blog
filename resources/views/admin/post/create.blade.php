@@ -8,7 +8,7 @@
 
         <div class="card-header">
             <h4>Add Posts
-                <a href="{{url('admin/add-post')}}" class="btn btn-primary float-end">Add Post</a>
+                <a href="{{url('user/add-post')}}" class="btn btn-primary float-end">Add Post</a>
             </h4>
         </div>
         <div class="card-body">
@@ -21,7 +21,7 @@
 
             </div>
             @endif
-           <form action="{{url('admin/add-post')}}" method="POST" id="add-form">
+           <form action="{{url('user/add-post')}}" method="POST" id="add-form">
             @csrf
             <div class="mb-3">
                 <label class="mb-1" for="">Category</label>

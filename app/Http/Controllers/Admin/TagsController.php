@@ -10,6 +10,8 @@ use App\Models\Taggable;
 use App\Models\Tags;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use SebastianBergmann\CodeCoverage\Node\CrapIndex;
 
 class TagsController extends Controller
@@ -29,12 +31,21 @@ class TagsController extends Controller
         $tag = new Tags();
         $tag->name = $data['name'];
         $tag->meta_title = $data['meta_title'];
+        if(!File::exists(public_path()."/uploads/tags/$tag->image")){
+            Storage::makeDirectory(public_path()."/uploads/tags");
+        }
+        if($request->hasFile('image')){
+            $file = $request->file('image');
+            $filename = time().'.'.$file->getClientOriginalExtension();
+            $file->move('uploads/tags/', $filename);
+            $tag->image = $filename;
+        }
         $tag->slug = $data['slug'];
         $tag->status = $request->status ? true == '0': '1';
         $tag->created_by = Auth::user()->id;
 
         $tag->save();
-        return redirect('admin/tag')->with('message', 'Tag Added Successfully');
+        return redirect('user/tag')->with('message', 'Tag Added Successfully');
     }
     public function edit($tag_id){
         $tag = Tags::find($tag_id);
@@ -48,17 +59,31 @@ class TagsController extends Controller
         $tag = Tags::find($tag_id);
         $tag->name = $data['name'];
         $tag->meta_title = $data['meta_title'];
+        if($request->hasFile('image')){
+
+            $destination = 'uploads/tags/'.$tag->image;
+
+            if(File::exists($destination)){
+                File::delete($destination);
+            }
+
+            $file = $request->file('image');
+            $filename = time().'.'.$file->getClientOriginalExtension();
+            $file->move('uploads/tags/', $filename);
+            $tag->image = $filename;
+        }
+
         $tag->slug = $data['slug'];
         $tag->status = $request->status == true ? '1':'0';
         $tag->created_by = Auth::user()->id;
 
         $tag->update();
-        return redirect('admin/tag')->with('message', 'Tag Updated Successfully');
+        return redirect('user/tag')->with('message', 'Tag Updated Successfully');
     }
     public function destroy($tag_id)
     {
         $tag = Tags::find($tag_id);
         $tag->delete();
-        return redirect('admin/tag')->with('message', 'Tag Deleted Successfully');
+        return redirect('user/tag')->with('message', 'Tag Deleted Successfully');
     }
 }
