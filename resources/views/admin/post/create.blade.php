@@ -13,15 +13,13 @@
         </div>
         <div class="card-body">
             @if ($errors->any())
-            <div class="alert alert-danger">
-
+                <div class="alert alert-danger">
                     @foreach ($errors->all() as $error )
                         <div>{{$error}}</div>
                     @endforeach
-
-            </div>
+                </div>
             @endif
-           <form action="{{url('user/add-post')}}" method="POST" id="add-form">
+           <form action="{{url('user/add-post')}}" method="POST" id="add-post-form">
             @csrf
             <div class="mb-3">
                 <label class="mb-1" for="">Category</label>
@@ -37,47 +35,54 @@
             <div class="mb-3">
                 <label class="mb-1" for="">Tags</label>
                 <div class="d-flex">
-                <select name="tag_id" class="form-control" style="width:50% !important; margin-right:2rem;" id="">
-                    <option value="">-- Select Tag --</option>
-                   @foreach ($tag as $tagItem)
-                   <option id="tagval" value="{{$tagItem->id}}">
-                    {{$tagItem->name}}
-                </option>
-                   @endforeach
-                </select>
-                <button id="btntag" class="float-left btn btn-primary">Add Tag</button>
-            </div>
+                    <select name="tag_id" class="form-control" style="width:50% !important; margin-right:2rem;" id="">
+                        <option value="">-- Select Tag --</option>
+                        @foreach ($tag as $tagItem)
+                            <option id="tagval" value="{{$tagItem->id}}">
+                                {{$tagItem->name}}
+                            </option>
+                        @endforeach
+                    </select>
+                    <button id="btntag" class="float-left btn btn-primary">Add Tag</button>
+                </div>
             </div>
             <div class="mb-3" id="output"></div>
             <div class="mb-3">
                 <label class="mb-1" for="">Post Name</label>
-                <input type="text" name="name" class="form-control">
+                <input type="text" name="name" class="form-control" style="border-color:none; background-color:none; outline-color: none; outline-width: 0;">
+                <span class="text-danger error-text name_error"></span>
             </div>
             <div class="mb-3">
                 <label class="mb-1" for="">Slug</label>
                 <input type="text" name="slug" class="form-control">
+                <span class="text-danger error-text slug_error"></span>
             </div>
             <div class="mb-3">
                 <label class="mb-1" for="">Description</label>
                 <textarea type="text" name="description" class="form-control" rows="4"></textarea>
+                <span class="text-danger error-text description_error"></span>
             </div>
             <div class="mb-3">
                 <label class="mb-1" for="">Youtube Iframe Link</label>
                 <input type="text" name="yt_iframe" class="form-control">
+                <span class="text-danger error-text yt_iframe_error"></span>
             </div>
 
             <h4>SEO Tags</h4>
             <div class="mb-3">
                 <label class="mb-1" for="">Meta Title</label>
                 <input type="text" name="meta_title" class="form-control">
+                <span class="text-danger error-text meta_title_error"></span>
             </div>
             <div class="mb-3">
                 <label class="mb-1" for="">Meta Description</label>
                 <textarea type="text" name="meta_description" class="form-control" rows="3"></textarea>
+                <span class="text-danger error-text meta_description_error"></span>
             </div>
             <div class="mb-3">
                 <label class="mb-1" for="">Meta Keyword</label>
                 <textarea type="text" name="meta_keyword" class="form-control" rows="3"></textarea>
+                <span class="text-danger error-text meta_keyword_error"></span>
             </div>
             <h4>Status</h4>
             <div class="row">
@@ -85,6 +90,7 @@
                     <div class="mb-3">
                         <label class="mb-1" for="">Status</label>
                         <input type="checkbox" name="status">
+                        <span class="text-danger error-text status_error"></span>
                     </div>
                 </div>
                 <div class="col-md-8">
@@ -96,5 +102,5 @@
            </form>
         </div>
     </div>
-    </div>
+</div>
 @endsection
