@@ -60,6 +60,7 @@ class CategoryController extends Controller
         $category->slug = $data['slug'];
         $category->description = $data['description'];
 
+
         if($request->hasFile('image')){
 
             $destination = 'uploads/category/'.$category->image;

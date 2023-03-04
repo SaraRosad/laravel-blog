@@ -91,7 +91,7 @@ class PostController extends Controller
     {
         $post = Post::find($post_id);
         $post->tags()->detach();
-        $post->delete();
+        $post->delete(); 
         return redirect('user/posts')->with('message', 'Post Deleted Successfully');
     }
 }
